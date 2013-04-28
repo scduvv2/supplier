@@ -8,6 +8,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import com.smartshop.web.account.*;
+import com.smartshop.web.account.repository.AccountRepository;
 
 @Controller
 public class SignupController {

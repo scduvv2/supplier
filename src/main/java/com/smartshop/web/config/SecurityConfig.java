@@ -7,6 +7,8 @@ import org.springframework.security.web.authentication.rememberme.TokenBasedReme
 
 import com.smartshop.web.account.UserService;
 
+
+
 @Configuration
 @ImportResource(value = "classpath:spring-security-context.xml")
 public class SecurityConfig {

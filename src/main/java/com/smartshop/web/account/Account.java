@@ -1,51 +1,53 @@
 package com.smartshop.web.account;
 
-import javax.persistence.*;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@SuppressWarnings("serial")
-@Entity
-@Table(name = "account")
-@NamedQuery(name = Account.FIND_BY_USERNAME, query = "select a from Account a where a.username = :username")
-public class Account implements java.io.Serializable {
-
-	public static final String FIND_BY_USERNAME = "Account.findByUsername";
-
+@Document
+public class Account {
+	
 	@Id
-	@GeneratedValue
-	private Long id;
-
-	@Column(unique = true)
+	private String id;
+	
+	private String firstName;
+	private String lastName;
+	
 	private String username;
-	
-	@JsonIgnore
 	private String password;
+	
+	@DBRef
+	private Role role;
 
-	private String role = "ROLE_USER";
-	
-	private String name;
-	
-	protected Account() {
-
-	}
-	
-	public Account(String username, String password, String role) {
-		this.username = username;
-		this.password = password;
-		this.role = role;
+	public Account(String email, String password2, String role) {
+		this.username=email; 
+		this.password=password2;
+		this.lastName=role;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public String getName() {
-		return name;
+	public void setId(String id) {
+		this.id = id;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getUsername() {
@@ -64,11 +66,11 @@ public class Account implements java.io.Serializable {
 		this.password = password;
 	}
 
-	public String getRole() {
+	public Role getRole() {
 		return role;
 	}
 
-	public void setRole(String role) {
+	public void setRole(Role role) {
 		this.role = role;
 	}
 }
