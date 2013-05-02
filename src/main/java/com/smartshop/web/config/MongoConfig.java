@@ -3,16 +3,21 @@ package com.smartshop.web.config;
 
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.mongodb.core.MongoFactoryBean;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+
 import com.mongodb.Mongo;
 import com.smartshop.web.account.repository.AccountRepository;
 
 @Configuration
-
+@EnableMongoRepositories()
+@EnableJpaRepositories("com.smartshop.web.account.repository.*")
 public class MongoConfig{
 
 	public @Bean MongoTemplate mongoTemplate(Mongo mongo) {
@@ -31,11 +36,5 @@ public class MongoConfig{
 		return mongo;
 	}
 
-
-	@Bean
-	public AccountRepository accountRepository(){
-		
-		return	new AccountRepository();
-	}
 
 }
