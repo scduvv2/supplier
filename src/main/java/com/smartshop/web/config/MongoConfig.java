@@ -5,6 +5,7 @@ package com.smartshop.web.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.mongodb.core.MongoFactoryBean;
@@ -16,8 +17,7 @@ import com.mongodb.Mongo;
 import com.smartshop.web.account.repository.AccountRepository;
 
 @Configuration
-@EnableMongoRepositories()
-@EnableJpaRepositories("com.smartshop.web.account.repository.*")
+@ImportResource(value = "classpath:spring-data.xml")
 public class MongoConfig{
 
 	public @Bean MongoTemplate mongoTemplate(Mongo mongo) {

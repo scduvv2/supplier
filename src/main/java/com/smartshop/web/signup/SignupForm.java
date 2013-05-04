@@ -3,6 +3,7 @@ package com.smartshop.web.signup;
 
 
 import com.smartshop.web.account.Account;
+import com.smartshop.web.account.Role;
 
 public class SignupForm {
 
@@ -15,6 +16,8 @@ public class SignupForm {
 	private String email;
 
 	private String password;
+	
+	private Role role;
 
 	public String getName() {
 		return name;
@@ -41,8 +44,8 @@ public class SignupForm {
 	}
 
 	public Account createAccount() {
-		Account account = new Account(getEmail(), getPassword(), "ROLE_USER");
-		account.setLastName(getName());
+		Account account = new Account(getEmail(), getPassword(), getName(), Role.merchant);
+		
 		return account;
 	}
 }

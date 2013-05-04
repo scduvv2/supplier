@@ -44,7 +44,7 @@ public class UserService implements UserDetailsService{
 			
 
 	private SimpleGrantedAuthority createAuthority(Account account) {
-		return new SimpleGrantedAuthority(account.getRole().getRole());
+		return new SimpleGrantedAuthority(account.getRole().getName());
 
 	}
 

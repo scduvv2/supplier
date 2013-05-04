@@ -1,27 +1,19 @@
 package com.smartshop.web.account;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+public enum Role {
+	
+	merchant("merchant"),
+	shopper("shopper");
+	
+	private String name;
 
-@Document
-public class Role {
-	
-	@Id
-	private String id;
-	
-	private String role;
-	
-	public String getId() {
-		return id;
+	public String getName() {
+		return name;
 	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public String getRole() {
-		return role;
-	}
-	public void setRole(String role) {
-		this.role = role;
+
+	private Role(String name){
+		this.name=name;
 	}
 	
+
 }

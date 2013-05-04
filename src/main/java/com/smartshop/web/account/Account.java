@@ -17,13 +17,13 @@ public class Account {
 	private String username;
 	private String password;
 	
-	@DBRef
 	private Role role;
 
-	public Account(String email, String password2, String role) {
+	public Account(String email, String password2, String lastName, Role role) {
 		this.username=email; 
 		this.password=password2;
-		this.lastName=role;
+		this.lastName=lastName;
+		this.role=role;
 	}
 
 	public String getId() {

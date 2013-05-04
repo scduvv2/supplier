@@ -6,7 +6,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.repository.RepositoryDefinition;
 
 @Configuration
-@ComponentScan(basePackages = { "com.smartshop.web" })
+@ComponentScan(basePackages = { "com.smartshop" })
 
 public class RootConfig {
 	
