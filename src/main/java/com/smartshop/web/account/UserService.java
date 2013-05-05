@@ -1,6 +1,8 @@
 package com.smartshop.web.account;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -25,7 +27,7 @@ public class UserService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
-		Account account = accountRepository.findByUsername(username);
+		Account account = accountRepository.findByEmail(username);
 		if(account == null) {
 			throw new UsernameNotFoundException("user not found");
 		}
@@ -33,7 +35,7 @@ public class UserService implements UserDetailsService{
 	}
 
 	private UserDetails createUser(Account account) {
-		return new User(account.getUsername(), account.getPassword(), Collections.singleton(createAuthority(account)));
+		return new User(account.getEmail(), account.getPassword(), createAuthority(account.getRoles()));
 
 	}
 	
@@ -42,12 +44,19 @@ public class UserService implements UserDetailsService{
 	}
 
 	private Authentication authenticate(Account account) {
-		return new UsernamePasswordAuthenticationToken(createUser(account), null, Collections.singleton(createAuthority(account)));		
+		return new UsernamePasswordAuthenticationToken(createUser(account), null, createAuthority(account.getRoles()));		
 	}
 			
 
-	private SimpleGrantedAuthority createAuthority(Account account) {
-		return new SimpleGrantedAuthority(account.getRole().getName());
+	private List<EnumGrantedAuthority> createAuthority(List<Role> roles) {
+
+		List<EnumGrantedAuthority> enumGrantedAuthorities = new ArrayList<EnumGrantedAuthority>();
+		for(Role role:roles){
+			EnumGrantedAuthority authority = new EnumGrantedAuthority(role);
+			enumGrantedAuthorities.add(authority);
+			
+		}
+		return enumGrantedAuthorities;
 
 	}
 

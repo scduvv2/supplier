@@ -1,9 +1,14 @@
 package com.smartshop.web.account;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.smartshop.web.signup.SignupForm;
 
 @Document
 public class Account {
@@ -14,17 +19,21 @@ public class Account {
 	private String firstName;
 	private String lastName;
 	
-	private String username;
+	private String email;
 	private String password;
 	
-	private Role role;
+	private List<Role> roles;
 
-	public Account(String username, String password, String lastName, Role role) {
-		this.username=username; 
+	public Account(String email, String password, String firstName, String lastName) {
+		this.email=email; 
 		this.password=password;
 		this.lastName=lastName;
-		this.role=role;
+		this.firstName=firstName;
+		this.roles = new ArrayList<Role>();
+		this.roles.add(Role.shopper);
 	}
+
+	
 
 	public String getId() {
 		return id;
@@ -50,12 +59,12 @@ public class Account {
 		this.lastName = lastName;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {
@@ -66,11 +75,15 @@ public class Account {
 		this.password = password;
 	}
 
-	public Role getRole() {
-		return role;
+	public List<Role> getRoles() {
+		return roles;
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+
+	public void addRole(Role role){
+		this.roles.add(role);
 	}
 }

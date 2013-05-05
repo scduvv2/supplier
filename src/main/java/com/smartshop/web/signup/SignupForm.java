@@ -1,36 +1,40 @@
 package com.smartshop.web.signup;
 
 
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.encoding.PasswordEncoder;
-
-import com.smartshop.web.account.Account;
-import com.smartshop.web.account.Role;
-
 public class SignupForm {
 
 	private static final String NOT_BLANK_MESSAGE = "{notBlank.message}";
 	private static final String EMAIL_MESSAGE = "{email.message}";
 
 
-	private String name;
+	private String firstName;
+	
+	private String lastName;
 
 	private String email;
 
 	private String password;
 	
-	private Role role;
+	private boolean isSeller;
 	
-	@Autowired
-	PasswordEncoder passwordEncoder;
-
-	public String getName() {
-		return name;
+	public boolean isSeller() {
+		return isSeller;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setSeller(boolean isSeller) {
+		this.isSeller = isSeller;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getEmail() {
@@ -49,5 +53,10 @@ public class SignupForm {
 		this.password = password;
 	}
 
-	
+	public String getFirstName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 }

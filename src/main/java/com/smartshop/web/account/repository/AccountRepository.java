@@ -9,6 +9,6 @@ import com.smartshop.web.account.Account;
 @Repository
 public interface AccountRepository extends MongoRepository<Account, String> {
 	
-	public Account findByUsername(String username);
+	public Account findByEmail(String email);
 	
 }

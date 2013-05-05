@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import com.smartshop.web.account.repository.AccountRepository;
 
 @Controller
-@Secured("ROLE_USER")
+@Secured(Role.SELLER)
 public class AccountController {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(AccountController.class);
@@ -24,6 +24,6 @@ public class AccountController {
 	@ResponseBody
 	public Account accounts(UserDetails userDetails) {
 		LOG.info(userDetails.toString());
-		return accountRepository.findByUsername(userDetails.getUsername());
+		return accountRepository.findByEmail(userDetails.getUsername());
 	}
 }
