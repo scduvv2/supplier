@@ -15,14 +15,14 @@ public class SignupForm {
 
 	private String password;
 	
-	private boolean isSeller;
+	private boolean seller;
 	
 	public boolean isSeller() {
-		return isSeller;
+		return seller;
 	}
 
 	public void setSeller(boolean isSeller) {
-		this.isSeller = isSeller;
+		this.seller = isSeller;
 	}
 
 	public String getLastName() {
