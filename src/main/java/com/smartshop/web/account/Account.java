@@ -19,9 +19,9 @@ public class Account {
 	
 	private Role role;
 
-	public Account(String email, String password2, String lastName, Role role) {
-		this.username=email; 
-		this.password=password2;
+	public Account(String username, String password, String lastName, Role role) {
+		this.username=username; 
+		this.password=password;
 		this.lastName=lastName;
 		this.role=role;
 	}

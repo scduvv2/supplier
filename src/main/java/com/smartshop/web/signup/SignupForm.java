@@ -2,6 +2,9 @@ package com.smartshop.web.signup;
 
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.PasswordEncoder;
+
 import com.smartshop.web.account.Account;
 import com.smartshop.web.account.Role;
 
@@ -18,6 +21,9 @@ public class SignupForm {
 	private String password;
 	
 	private Role role;
+	
+	@Autowired
+	PasswordEncoder passwordEncoder;
 
 	public String getName() {
 		return name;
@@ -43,9 +49,5 @@ public class SignupForm {
 		this.password = password;
 	}
 
-	public Account createAccount() {
-		Account account = new Account(getEmail(), getPassword(), getName(), Role.merchant);
-		
-		return account;
-	}
+	
 }
