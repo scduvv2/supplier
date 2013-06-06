@@ -3,8 +3,9 @@
 
 <div class="hero-unit">
 	<h1><s:message code="view.index.title" /></h1>
-	<p>Welcome to the Spring MVC Quickstart application! </p>
+	<p><s:message code="view.index.body" /></p>
 	<p>
 		<a href='<s:url value="/signup" />' class="btn btn-primary btn-large"> Sign Up </a>
 	</p>
 </div>
+

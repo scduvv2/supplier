@@ -1,4 +1,4 @@
-package com.smartshop.web.account;
+package com.smartshop.web.security;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,6 +15,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import com.smartshop.web.account.Account;
+import com.smartshop.web.account.Role;
 import com.smartshop.web.account.repository.AccountRepository;
 
 public class UserService implements UserDetailsService{

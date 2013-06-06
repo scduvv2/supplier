@@ -9,7 +9,7 @@
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span>
 			</a> 
-			<a class="brand" href="#">Demo project</a>
+			<a class="brand logo" href="#"><img src="/resources/img/Gilpam_02.jpg" /></a>
 			<div class="nav-collapse collapse">
 				<ul class="nav">
 					<li class="active"><a href='<s:url value="/"></s:url>'>Home</a></li>

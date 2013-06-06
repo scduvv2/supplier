@@ -5,6 +5,8 @@ import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.repository.RepositoryDefinition;
 
+import com.smartshop.web.account.dao.AccountDetailsDao;
+
 @Configuration
 @ComponentScan(basePackages = { "com.smartshop" })
 
@@ -17,6 +19,13 @@ public class RootConfig {
 		return ppc;
 	}
 	
+	public @Bean AccountDetailsDao accountDetailsDao(){
+		
+		AccountDetailsDao accountDetailsDao = new AccountDetailsDao();
+		
+		return accountDetailsDao;
+	}
+
 	
 	
 }

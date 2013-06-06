@@ -54,9 +54,9 @@ public class SignupForm {
 	}
 
 	public String getFirstName() {
-		// TODO Auto-generated method stub
-		return null;
+		return firstName;
 	}
+
 
 
 }

@@ -2,14 +2,16 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras" prefix="tilesx"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-	<title>Hello World!</title>
+	<title><s:message code="header.title"/></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet" media="screen" />
 	<link href="<c:url value="/resources/css/core.css" />" rel="stylesheet" media="screen" />
+	<link href="<c:url value="/resources/css/header.css" />" rel="stylesheet" media="screen" />
 	
 	<tilesx:useAttribute id="styles" name="styles" classname="java.util.List" ignore="true" />
 	<c:forEach var="cssName" items="${styles}">

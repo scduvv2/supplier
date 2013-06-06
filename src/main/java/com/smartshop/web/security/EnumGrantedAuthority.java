@@ -1,6 +1,8 @@
-package com.smartshop.web.account;
+package com.smartshop.web.security;
 
 import org.springframework.security.core.GrantedAuthority;
+
+import com.smartshop.web.account.Role;
 
 public class EnumGrantedAuthority implements GrantedAuthority {
 

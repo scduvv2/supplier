@@ -32,7 +32,7 @@ public class MongoConfig{
 	 */
 	public @Bean MongoFactoryBean mongo() {
 		MongoFactoryBean mongo = new MongoFactoryBean();
-		mongo.setHost("192.168.1.14");
+		mongo.setHost("166.78.1.26");
 		return mongo;
 	}
 
