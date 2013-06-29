@@ -4,9 +4,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class PhoneNumber extends BaseDocument{
-	
 
-	
 	private Long phoneNumber;
 
 	public Long getPhoneNumber() {

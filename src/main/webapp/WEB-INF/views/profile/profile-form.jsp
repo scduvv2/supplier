@@ -28,6 +28,7 @@
 	<form:input path="address.zipCode" class="input-block-level" placeholder="Zip Code" />
 	<form:errors path="address.zipCode" element="p" class="text-error"/>
 	<security:authorize access="hasRole('merchant')">
+		<c:if test="${ not empty store }">
    			<p>Shop Details:</p>
 		   	<form:input path="store.name" class="input-block-level" placeholder="Store Name" />
 			<form:errors path="store.name" element="p" class="text-error"/> 
@@ -45,7 +46,8 @@
 			<form:input path="store.address.country" class="input-block-level" placeholder="Country" />
 			<form:errors path="store.address.country" element="p" class="text-error"/>
 			<form:input path="store.address.zipCode" class="input-block-level" placeholder="Zip Code" />
-			<form:errors path="store.address.zipCode" element="p" class="text-error"/> 
+			<form:errors path="store.address.zipCode" element="p" class="text-error"/>
+		</c:if> 
 	</security:authorize>
 	<button class="btn btn-large btn-primary" type="submit">Update</button>
 </form:form>

@@ -1,4 +1,4 @@
-package com.smartshop.web.signup;
+package com.smartshop.web.registration;
 
 import javax.validation.Valid;
 
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import com.smartshop.web.account.*;
 import com.smartshop.web.account.dao.AccountDetailsDao;
 import com.smartshop.web.account.repository.AccountRepository;
+import com.smartshop.web.registration.form.SignupForm;
 import com.smartshop.web.security.UserService;
 
 @Controller

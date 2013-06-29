@@ -15,7 +15,6 @@ public class BaseDocument {
 		this.id = id;
 	}
 
-
 	@Override
 	public boolean equals(Object obj) {
 	

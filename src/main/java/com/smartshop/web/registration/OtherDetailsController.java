@@ -1,4 +1,4 @@
-package com.smartshop.web.signup;
+package com.smartshop.web.registration;
 
 
 
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.smartshop.web.account.dao.AccountDetailsDao;
+import com.smartshop.web.registration.form.OtherDetailsForm;
 
 
 
@@ -24,7 +25,7 @@ public class OtherDetailsController {
 	@Autowired
 	private AccountDetailsDao accountDetailsDao;
 	
-	@RequestMapping(value = "add-details")
+	@RequestMapping(value = "add-details",method=RequestMethod.GET)
 	public OtherDetailsForm formPreProcess(UserDetails userDetails,HttpServletResponse response) throws IOException {
 		if(accountDetailsDao.areAccountDetailsAdded(userDetails.getUsername())){
 			response.sendRedirect("profile");

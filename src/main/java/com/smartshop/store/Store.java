@@ -1,9 +1,14 @@
-package com.smartshop.web.account;
+package com.smartshop.store;
 
 import java.util.List;
 
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.smartshop.web.account.Account;
+import com.smartshop.web.account.Address;
+import com.smartshop.web.account.BaseDocument;
+import com.smartshop.web.account.PhoneNumber;
 
 @Document
 public class Store extends BaseDocument{
@@ -13,15 +18,13 @@ public class Store extends BaseDocument{
 	
 	@DBRef
 	private Address address;
-	
-	@DBRef
-	private Account ownerAccount;
-	
-	@DBRef
-	private List<Account> otherAccounts;
+
 	
 	@DBRef
 	private PhoneNumber phoneNumber;
+	
+	@DBRef
+	private Catalog catalog;
 
 	public PhoneNumber getPhoneNumber() {
 		return phoneNumber;
@@ -35,17 +38,8 @@ public class Store extends BaseDocument{
 		return name;
 	}
 
-
 	public Address getAddress() {
 		return address;
-	}
-
-	public Account getOwnerAccount() {
-		return ownerAccount;
-	}
-
-	public List<Account> getOtherAccounts() {
-		return otherAccounts;
 	}
 
 	public void setName(String name) {
@@ -55,15 +49,15 @@ public class Store extends BaseDocument{
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-
-	public void setOwnerAccount(Account ownerAccount) {
-		this.ownerAccount = ownerAccount;
-	}
-
-	public void setOtherAccounts(List<Account> otherAccounts) {
-		this.otherAccounts = otherAccounts;
-	}
 	
+	public Catalog getCatalog() {
+		return catalog;
+	}
+
+	public void setCatalog(Catalog catalog) {
+		this.catalog = catalog;
+	}
+
 	@Override
 	public String toString() {
 		

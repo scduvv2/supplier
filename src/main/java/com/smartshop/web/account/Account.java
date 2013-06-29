@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.smartshop.web.signup.SignupForm;
+import com.smartshop.store.Store;
 
 @Document
 public class Account extends BaseDocument {
@@ -21,8 +21,23 @@ public class Account extends BaseDocument {
 	@DBRef
 	private Address address;
 	
+	public List<Store> getStores() {
+		return stores;
+	}
+
+	public void setStores(List<Store> stores) {
+		this.stores = stores;
+	}
+	
+	public void addStore(Store store){
+		if(this.stores==null){
+			this.stores = new ArrayList<Store>();
+		}
+		this.stores.add(store);
+	}
+
 	@DBRef
-	private Store store;
+	private List<Store> stores;
 	
 	public PhoneNumber getPhoneNumber() {
 		return phoneNumber;
@@ -31,18 +46,6 @@ public class Account extends BaseDocument {
 	public void setPhoneNumber(PhoneNumber phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-
-	public Store getStore() {
-		return store;
-	}
-
-
-
-	public void setStore(Store store) {
-		this.store = store;
-	}
-
-
 
 	public Account(String email, String password, String firstName, String lastName) {
 		this.email=email; 
@@ -109,6 +112,17 @@ public class Account extends BaseDocument {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public boolean hasStore(Store store) {
+		for(Store existingStore : stores){
+			if(existingStore.equals(store)){
+				return true;
+			}
+				
+			
+		}
+		return false;
 	}
 
 }

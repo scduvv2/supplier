@@ -6,6 +6,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.repository.RepositoryDefinition;
 
 import com.smartshop.web.account.dao.AccountDetailsDao;
+import com.smartshop.web.account.dao.CatalogDao;
 
 @Configuration
 @ComponentScan(basePackages = { "com.smartshop" })
@@ -26,6 +27,9 @@ public class RootConfig {
 		return accountDetailsDao;
 	}
 
+	public @Bean CatalogDao catalogDao(){
+		return new CatalogDao();
+	}
 	
 	
 }

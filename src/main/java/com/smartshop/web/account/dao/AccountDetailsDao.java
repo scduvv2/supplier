@@ -1,36 +1,18 @@
 package com.smartshop.web.account.dao;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.encoding.PasswordEncoder;
+import com.smartshop.store.Catalog;
+import com.smartshop.store.Store;
 import com.smartshop.web.account.Account;
 import com.smartshop.web.account.Role;
-import com.smartshop.web.account.Store;
-import com.smartshop.web.account.repository.AccountRepository;
-import com.smartshop.web.account.repository.AddressRepository;
-import com.smartshop.web.account.repository.PhoneNumberRepository;
-import com.smartshop.web.account.repository.StoreRepository;
-import com.smartshop.web.signup.OtherDetailsForm;
-import com.smartshop.web.signup.ProfileForm;
-import com.smartshop.web.signup.SignupForm;
+import com.smartshop.web.registration.form.OtherDetailsForm;
+import com.smartshop.web.registration.form.ProfileForm;
+import com.smartshop.web.registration.form.SignupForm;
 
 
-public class AccountDetailsDao {
+public class AccountDetailsDao extends BaseMongoDao {
 	
 	
-	@Autowired
-	AccountRepository accountRepository;
-	
-	@Autowired
-	AddressRepository addressRepository;
-	
-	@Autowired
-	PhoneNumberRepository phoneNumberRepository;
-	
-	@Autowired
-	StoreRepository storeRepository;
-	
-	@Autowired
-	PasswordEncoder passwordEncoder;
+
 	
 	public Account findAccountByEmail(String email){
 		
@@ -68,7 +50,7 @@ public class AccountDetailsDao {
 			saveStore(otherDetailsForm.getStore());
 			account.setAddress(otherDetailsForm.getAddress());
 			account.setPhoneNumber(otherDetailsForm.getPhoneNumber());
-			account.setStore(otherDetailsForm.getStore());
+			account.addStore(otherDetailsForm.getStore());
 			accountRepository.save(account);
 			
 		}
@@ -76,7 +58,12 @@ public class AccountDetailsDao {
 
 	public Store saveStore(Store store) {
 	
-		
+		addressRepository.save(store.getAddress());
+		Catalog catalog = new Catalog();
+		catalogRepository.save(catalog);
+		store.setCatalog(catalog);
+		phoneNumberRepository.save(store.getPhoneNumber());
+		storeRepository.save(store);
 		return store;
 		
 	}
@@ -94,9 +81,9 @@ public class AccountDetailsDao {
 			
 		}
 		
-		if(profileForm.getStore()!=null && !profileForm.getStore().equals(account.getStore())){
+		if(profileForm.getStore()!=null && !account.hasStore(profileForm.getStore())){
 			storeRepository.save(profileForm.getStore());
-			account.setStore(profileForm.getStore());
+			account.addStore(profileForm.getStore());
 			
 		}
 		accountRepository.save(account);

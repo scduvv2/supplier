@@ -1,4 +1,4 @@
-package com.smartshop.web.signup;
+package com.smartshop.web.registration.form;
 
 
 public class ProfileForm extends OtherDetailsForm{

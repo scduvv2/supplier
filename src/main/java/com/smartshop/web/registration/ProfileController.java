@@ -1,4 +1,4 @@
-package com.smartshop.web.signup;
+package com.smartshop.web.registration;
 
 import java.io.IOException;
 import java.security.Principal;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.smartshop.web.account.Account;
 import com.smartshop.web.account.dao.AccountDetailsDao;
+import com.smartshop.web.registration.form.ProfileForm;
 
 @Controller
 public class ProfileController {
@@ -34,9 +35,9 @@ public class ProfileController {
 		profileForm.setLastName(profileForm.getLastName());
 		profileForm.setAddress(account.getAddress());
 		profileForm.setPhoneNumber(account.getPhoneNumber());
-		profileForm.setStore(account.getStore());
+//		profileForm.setStore(account.getStore());
 		profileForm.setEmail(account.getEmail());
-		profileForm.setStore(account.getStore());
+//		profileForm.setStore(account.getStore());
 
 		return profileForm;
 	}

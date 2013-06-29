@@ -1,8 +1,8 @@
-package com.smartshop.web.signup;
+package com.smartshop.web.registration.form;
 
+import com.smartshop.store.Store;
 import com.smartshop.web.account.Address;
 import com.smartshop.web.account.PhoneNumber;
-import com.smartshop.web.account.Store;
 
 public class OtherDetailsForm {
 	
