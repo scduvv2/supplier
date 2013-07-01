@@ -1,4 +1,4 @@
-package com.smartshop.supplier.web.dashboard.model;
+package com.smartshop.supplier.web.model;
 
 
 

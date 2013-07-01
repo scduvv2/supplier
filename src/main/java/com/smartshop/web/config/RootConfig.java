@@ -7,6 +7,7 @@ import org.springframework.data.repository.RepositoryDefinition;
 
 import com.smartshop.web.account.dao.AccountDetailsDao;
 import com.smartshop.web.account.dao.CatalogDao;
+import com.smartshop.web.account.dao.StoreDao;
 
 @Configuration
 @ComponentScan(basePackages = { "com.smartshop" })
@@ -31,5 +32,7 @@ public class RootConfig {
 		return new CatalogDao();
 	}
 	
-	
+	public @Bean StoreDao storeDao(){
+		return new StoreDao();
+	}
 }
