@@ -13,8 +13,7 @@ import com.smartshop.web.account.Account;
 import com.smartshop.web.account.dao.AccountDetailsDao;
 import com.smartshop.web.account.dao.CatalogDao;
 
-@Controller
-public class DashboardController {
+@Controller class DashboardController {
 	
 	@Autowired
 	private AccountDetailsDao accountDetailsDao;
