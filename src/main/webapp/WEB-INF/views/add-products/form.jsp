@@ -11,5 +11,7 @@
 	<form:errors path="product.name" element="p" class="text-error"/> 
 	<form:input path="product.brand" class="input-block-level" placeholder="Brand Name" />
 	<form:errors path="product.brand" element="p" class="text-error"/> 
+	<form:input path="product.barCode" class="input-block-level" placeholder="Bar Code" />
+	<form:errors path="product.barCode" element="p" class="text-error"/> 
 	<button class="btn btn-large btn-primary" type="submit">Add Product</button>
 </form:form>

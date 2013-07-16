@@ -2,6 +2,7 @@ package com.smartshop.supplier.web;
 
 
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -16,10 +17,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.smartshop.store.Catalog;
 import com.smartshop.store.Product;
 import com.smartshop.store.Store;
+import com.smartshop.supplier.web.form.AddMultipleProductsForm;
 import com.smartshop.supplier.web.form.AddProductForm;
 import com.smartshop.supplier.web.model.CatalogPage;
 import com.smartshop.web.account.Account;
@@ -42,7 +47,7 @@ public class CatalogController {
 	@Autowired
 	AccountDetailsDao accountDetailsDao;
 
-	@RequestMapping(value = "/catalog/{catalogId}/products/",method=RequestMethod.POST)
+	@RequestMapping(value = "/catalog/{catalogId}/product/",method=RequestMethod.POST)
 	public String addProducts(@PathVariable("catalogId") String catalogId,UserDetails userDetails,@Valid @ModelAttribute AddProductForm addProductForm,HttpServletResponse response) throws IOException {
 
 		
@@ -50,10 +55,26 @@ public class CatalogController {
 		return "redirect:/dashboard";
 	}
 	
-	@RequestMapping(value = "/catalog/{catalogId}/products/",method=RequestMethod.GET)
+	@RequestMapping(value = "/catalog/{catalogId}/product/",method=RequestMethod.GET)
 	public AddProductForm renderAddProducts(@PathVariable("catalogId") String catalogId,UserDetails userDetails,HttpServletResponse response) throws IOException {
 
 		
 		return new AddProductForm();
 	}
+	
+	@RequestMapping(value = "/catalog/{catalogId}/products/",method=RequestMethod.POST)
+    public String uploadMultipleProducts(@PathVariable("catalogId") String catalogId,@ModelAttribute AddMultipleProductsForm addMultipleProductsForm,
+            HttpServletResponse httpServletResponse) {
+    	
+		File file = addMultipleProductsForm.getFile();
+				
+		
+    	return "redirect:/dashboard";
+    }
+	
+	@RequestMapping(value = "/catalog/{catalogId}/products/",method=RequestMethod.GET)
+    public AddMultipleProductsForm uploadMultipleProductsFormView(@PathVariable("catalogId") String catalogId,HttpServletResponse httpServletResponse) {
+    	
+    	return new AddMultipleProductsForm();
+    }
 }

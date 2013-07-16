@@ -30,7 +30,7 @@
 						</c:forEach>
 					</table>
 					</c:when>
-					<c:otherwise><a href="store/${store.id}/catalog"> add Catalog</a></c:otherwise>
+					<c:otherwise><a href="store/${store.id}/overview/"> add Catalog</a></c:otherwise>
 				</c:choose>
 			</div>
 			

@@ -14,6 +14,7 @@ public class Product extends BaseDocument {
 	private String brand;
 	private Long productId;
 	private List<Category> categories;
+	private String barCode;
 	
 	public String getName() {
 		return name;
@@ -45,6 +46,12 @@ public class Product extends BaseDocument {
 			this.categories = new ArrayList<Category>();
 		}
 		this.categories.add(category);
+	}
+	public String getBarCode() {
+		return barCode;
+	}
+	public void setBarCode(String barCode) {
+		this.barCode = barCode;
 	}
 	
 	
