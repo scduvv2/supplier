@@ -1,22 +1,31 @@
 package com.smartshop.supplier.web.form;
 
 
-import java.io.File;
 
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class AddMultipleProductsForm {
 	
-	private File  file;
-
-	public File getFile() {
-		return file;
-	}
-
-	public void setFile(File file) {
-		this.file = file;
-	}
-	
-	
-
+	private String name;
+	  private CommonsMultipartFile fileData;
+	 
+	  public String getName()
+	  {
+	    return name;
+	  }
+	 
+	  public void setName(String name)
+	  {
+	    this.name = name;
+	  }
+	 
+	  public CommonsMultipartFile getFileData()
+	  {
+	    return fileData;
+	  }
+	 
+	  public void setFileData(CommonsMultipartFile fileData)
+	  {
+	    this.fileData = fileData;
+	  }
 }

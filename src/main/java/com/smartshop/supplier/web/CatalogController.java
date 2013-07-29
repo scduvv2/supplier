@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.smartshop.store.Catalog;
 import com.smartshop.store.Product;
@@ -40,6 +41,9 @@ public class CatalogController {
 
 	@Autowired
 	CatalogDao catalogDao;
+	
+	@Autowired
+	BulkCatalogService bulkCatalogService;
 
 	@Autowired
 	StoreDao storeDao; 
@@ -64,12 +68,28 @@ public class CatalogController {
 	
 	@RequestMapping(value = "/catalog/{catalogId}/products/",method=RequestMethod.POST)
     public String uploadMultipleProducts(@PathVariable("catalogId") String catalogId,@ModelAttribute AddMultipleProductsForm addMultipleProductsForm,
-            HttpServletResponse httpServletResponse) {
+            HttpServletResponse httpServletResponse,final RedirectAttributes  redirectAttributes) {
     	
-		File file = addMultipleProductsForm.getFile();
+		File file = new File("tmpfile");	
+		List<Product> products=null;
+		try {
+			addMultipleProductsForm.getFileData().transferTo(file);
+		} catch (IllegalStateException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 				
+		try{
+			 products = bulkCatalogService.processBulkform(file);
+		}catch (BulkCatalogProcessException e){
+			
+		}
 		
-    	return "redirect:/dashboard";
+		redirectAttributes.addFlashAttribute(products);
+    	return "redirect:/catalog/{catalogId}/products-list/";
     }
 	
 	@RequestMapping(value = "/catalog/{catalogId}/products/",method=RequestMethod.GET)
@@ -77,4 +97,7 @@ public class CatalogController {
     	
     	return new AddMultipleProductsForm();
     }
+	
+	
+	
 }

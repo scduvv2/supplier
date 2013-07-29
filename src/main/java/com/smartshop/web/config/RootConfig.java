@@ -7,6 +7,7 @@ import org.springframework.data.repository.RepositoryDefinition;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
+import com.smartshop.supplier.web.BulkCatalogService;
 import com.smartshop.web.account.dao.AccountDetailsDao;
 import com.smartshop.web.account.dao.CatalogDao;
 import com.smartshop.web.account.dao.StoreDao;
@@ -28,6 +29,11 @@ public class RootConfig {
 		AccountDetailsDao accountDetailsDao = new AccountDetailsDao();
 		
 		return accountDetailsDao;
+	}
+	
+	public @Bean BulkCatalogService bulkCatalogService(){
+		
+		return new BulkCatalogService();
 	}
 
 	public @Bean CatalogDao catalogDao(){
